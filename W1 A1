@@ -1,3 +1,24 @@
-pretend
-code
-is here
+import math
+#10 5 18 12
+x1 = 5
+y1 = 8
+x2 = 10
+y2 = -25
+
+Distance = math.sqrt(pow((x2 - x1), 2) + pow((y2 - y1), 2))
+print("Distance:" + format(Distance, ".5"))
+
+avg = 4
+Time = Distance * avg
+print("Time" + format(Time, ".4"))
+
+xdiff = x2 - x1
+ydiff = y2 - y1
+
+ang = math.atan2((ydiff), (xdiff))
+print("Angle:" + format(ang, ".3"))
+
+
+uput = "Walking {dyyy} km will take {hyyy} hours."
+puput = uput.format(dyyy = format(Distance, ".3"), hyyy = format(Time, ".3"))
+print(puput)

@@ -1,0 +1,14 @@
+import math
+
+v = 9
+theta = 0.523
+d = 30
+g = 9.81
+
+t = d / (v * math.cos(theta))
+
+print("Time is equal to " + str(t))
+
+y = ((v * math.sin(theta)) * t) - (0.5 * g * t**2)
+
+print("Height at goal line is equal to " + str(y))

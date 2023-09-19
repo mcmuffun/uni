@@ -1,0 +1,10 @@
+
+rain_area = 100**2
+lake = 2**2
+water_level = 0.5
+
+amount_water = lake * water_level
+area_rain = amount_water / rain_area
+area_rain = area_rain*10**3
+
+print("Amount of rain required is " + format(area_rain) + "mm.")

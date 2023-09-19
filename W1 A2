@@ -1,0 +1,23 @@
+
+numWidgets = 1234567
+small = 1
+medium = 5
+large = 20
+huge = 50
+
+total = numWidgets
+
+numhuge = numWidgets//50
+numWidgets -= numhuge*50
+
+numlarge = numWidgets//20
+numWidgets -= numlarge*20
+
+nummedium = numWidgets//5
+numWidgets -= nummedium*5
+
+numsmall = numWidgets//1
+numWidgets -= numsmall*1
+
+print("To ship " + str(total) + " widgets use " + str(numhuge) + " huge containers, " + str(numlarge) + " large containers, " + str(nummedium) + " medium containers and " + str(numsmall) + " small containers.")
+

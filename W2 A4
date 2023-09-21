@@ -1,0 +1,14 @@
+principle = float(input("Enter amount of money borrowed:"))
+interestrate = float(input("Enter yearly interest rate:"))
+amountyears = float(input("Enter the number of years of the loan:"))
+
+monthinterest = float((interestrate / 12) / 100)
+amountmonths = float(amountyears * 12)
+precentmonthinterest = monthinterest * 100
+
+topfraction = float(principle * monthinterest * ((1 + monthinterest)**amountmonths))
+bottomfraction = float((1 + monthinterest)**(amountmonths - 1))
+
+monthlypayment = float(topfraction / bottomfraction)
+
+print("For ", float(principle), "loan and a yearly interest of", interestrate, ", %0.2f" %monthlypayment, "dollars a month is required to pay off your loan in ", amountyears, " years.")

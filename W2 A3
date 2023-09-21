@@ -1,0 +1,24 @@
+lyrics = input("Enter lyrics:")
+firstspace = lyrics.find(" ")
+firstword = lyrics[:firstspace]
+print("First word: " + firstword)
+
+lastspace = lyrics.rfind(" ")
+lastword = lyrics[lastspace:]
+print("Last word:" + lastword)
+
+thirdspace = lyrics.find(" ", firstspace + 1)
+fourthspace = lyrics.find(" ", thirdspace +1)
+thirdword = lyrics[thirdspace:fourthspace]
+print("Third word is:" + thirdword)
+
+letter = input("Enter a letter:")
+firstletter = lyrics.find(letter)
+secondletter = lyrics.find(firstletter)
+spaceafter = lyrics.find(" ")
+letterspaceafter = lyrics.find(" ", secondletter)
+letterspacebefore = lyrics.find(secondletter, " ")
+letterword = lyrics[letterspacebefore:letterspaceafter]
+print(letterword)
+
+print()

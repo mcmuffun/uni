@@ -13,12 +13,11 @@ thirdword = lyrics[thirdspace:fourthspace]
 print("Third word is:" + thirdword)
 
 letter = input("Enter a letter:")
-firstletter = lyrics.find(letter)
-secondletter = lyrics.find(firstletter)
-spaceafter = lyrics.find(" ")
-letterspaceafter = lyrics.find(" ", secondletter)
-letterspacebefore = lyrics.find(secondletter, " ")
-letterword = lyrics[letterspacebefore:letterspaceafter]
-print(letterword)
+locateletter = lyrics.find(letter)
+nextletter = lyrics.find(letter, locateletter + 1)
 
-print()
+letterspaceb = lyrics.rfind(" ", 0, nextletter)
+letterspacea = lyrics.find(" ", letterspaceb + 1)
+
+findletter = lyrics[letterspaceb + 1:letterspacea]
+print("For letter " + letter + ": " + findletter)

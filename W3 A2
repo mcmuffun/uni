@@ -1,0 +1,18 @@
+total = 0
+num = 0
+
+loop = True
+while loop:
+    user_input = input("Enter an number, or q to stop: ")
+
+    if user_input == 'q':
+        loop = False
+
+    elif not user_input.isnumeric():
+        print("Error, not a number. Try again.")
+    else:
+        num = int(user_input)
+        total += num
+
+# Print the sum when the user quits
+print("Total of all numbers entered is:", total)

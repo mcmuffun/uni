@@ -1,0 +1,8 @@
+word_loop = True
+while word_loop:
+    word_5 = input("Enter 5 letter word: ")
+    if len(word_5) == 5 and word_5.isalpha() and 'm' in word_5:
+        print(word_5)
+        word_loop = False
+    else:
+        print("Try again! Your word must contain the letter 'm'")

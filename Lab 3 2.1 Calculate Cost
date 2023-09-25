@@ -1,0 +1,23 @@
+tot_cost = 0
+
+another_purchase = True
+while another_purchase:
+    number_item = input("Enter number of items:").isnumeric()
+    cost_cents = int(input("Enter cost of items in cents:"))
+    cost_dollar = cost_cents / 100
+    print(f"${cost_dollar:.2f}")
+
+    if number_item <10:
+        tot_cost += cost_dollar
+
+    if number_item >=10<=19:
+        tot_cost += 0.9 * cost_dollar
+
+    if number_item >20:
+        tot_cost += 0.8 * cost_dollar
+
+    another_purchase = input("Do you want to enter another purchase? (yes/no): ").lower()
+if another_purchase != 'yes':
+    continue_purchase = False
+
+print(tot_cost)

@@ -1,0 +1,4 @@
+while True:
+    cost_cents = int(input("Enter cost of intem in cents:"))
+    cost_dollar = cost_cents / 100
+    print(f"${cost_dollar:.2f}")

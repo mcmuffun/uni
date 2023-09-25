@@ -1,0 +1,29 @@
+import math
+
+loop = True
+while loop:
+    user_input = input("Input 's' for Squared, 'r' for Root or 'q' to Quit: ")
+
+    if user_input == 'q':
+        loop = False
+
+    elif user_input == 's':
+        squared_input = input("Enter a positive intiger to square: ")
+
+        if not squared_input.isnumeric():
+            print("That's not a positive intiger")
+        else:
+            int_squared_input = int(squared_input)
+            int_squared_input = pow(int_squared_input,2)
+            print(int_squared_input)
+
+    elif user_input == 'r':
+        root_input = input("Enter a positive integer to calculate the square root: ")
+
+        if not root_input.isnumeric():
+            print("Error, that's not a positive intiger")
+
+        else:
+            int_root_input = int(root_input)
+            int_root_input = math.sqrt(int_root_input)
+            print(int_root_input)

@@ -1,0 +1,99 @@
+# Constants
+markup_percent = .40
+tax_PST = .07
+tax_GST = .05
+staff_discount_rate = .1
+loyalty_points_per_dollar = 10
+shipping_cost = 7.50
+shipping_limit = 75
+
+# Initial Variables
+tot_manufacturer_coupon = 0
+staff_discount = 0
+stock_discount = 0
+tot_sales_bofore_discount_tax = 0
+tot_sales_before_tax = 0
+amount_pst = 0
+amount_gst = 0
+cost_of_shipping = 0
+tot_amount_for_customer = 0
+tot_reward_points = 0
+tot_profit = 0
+tot_cost = 0
+
+continue_transaction = True
+question_staff_code = input('Do you have a staff code (yes/no):')
+if question_staff_code == "yes":
+    staff_code = int(input("Enter staff code: "))
+else:
+    staff_code = 0
+
+while continue_transaction:
+    #Input details of transaction
+    stock_code = input("Please enter the stock code: ")
+    cost = int(input("Please enter the stock cost: "))
+    quantity = int(input("Please enter quantitiy of stock: "))
+    manufacturer_coupon = int(input("Please enter manufacturing coupon:"))
+
+    #Calculating manufacturer coupon amount
+    manufacturer_coupon_amount = manufacturer_coupon * quantity
+    tot_manufacturer_coupon += manufacturer_coupon_amount
+
+    #Calculating total sales before tax and discound aswell as stock discount
+    markup_cost = cost + (cost * markup_percent)
+    if stock_code == "A3453" and quantity >= 2:
+        stock_discount += (markup_cost * .15) * quantity
+    tot_sales_bofore_discount_tax += markup_cost * quantity
+
+    #Calculating profit on transaction
+    base_cost = cost * quantity
+    tot_cost += base_cost
+
+    #Calculating tax exemption
+    if stock_code.startswith('E'):
+        TAX_PST = 0
+        TAX_GST = 0
+    else:
+        TAX_PST = tax_PST
+        TAX_GST = tax_GST
+
+    #Calculating provincial sales tax amount
+    amount_pst += tot_sales_bofore_discount_tax * TAX_PST
+    amount_gst += tot_sales_bofore_discount_tax * TAX_GST
+
+    #Ask the user if they want to continue transaction
+    another_stock = input("Do you have another purchase (yes/no): ").lower()
+    if another_stock == 'no':
+        continue_transaction = False
+
+#Calculating staff discount
+if staff_code > 0:
+    staff_discount = tot_sales_bofore_discount_tax * staff_discount_rate
+
+#Calculating total sales before tax
+tot_sales_before_tax = tot_sales_bofore_discount_tax - tot_manufacturer_coupon - staff_discount - stock_discount
+
+#Calculating shipping cost
+if tot_sales_bofore_discount_tax < shipping_limit:
+    cost_of_shipping = shipping_cost
+
+#Calculating profit on transaction
+tot_profit = tot_sales_bofore_discount_tax - tot_cost
+
+#Calculating total cost for customer
+tot_amount_for_customer = tot_sales_before_tax + amount_gst + amount_pst + cost_of_shipping
+
+#Calculating total reward points
+tot_reward_points = 10 * tot_sales_bofore_discount_tax
+
+print(f"Total manufacturer coupon amount is: ${tot_manufacturer_coupon:.2f}")
+print(f"Staff discound amount is: ${staff_discount:.2f}")
+print(f"Stock discount amound is: ${stock_discount:.2f}")
+print(f"Total sales before Discount and tax is: ${tot_sales_bofore_discount_tax:.2f}")
+print(f"Total sales before tax is: ${tot_sales_before_tax:.2f}")
+print(f"Total cost of shiiping is: ${cost_of_shipping:.2f}")
+print(f"Provincial sales Tax amound is: ${amount_pst:.2f}")
+print(f"Canada General sales Tax amound is: ${amount_gst:.2f}")
+print(f"Total amount paid by the customer is: ${tot_amount_for_customer:.2f}")
+print(f"The profit on the transaction is: ${tot_profit:.2f}")
+print(f"The total reward points is: ${tot_reward_points:.2f}")

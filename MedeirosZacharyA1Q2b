@@ -1,0 +1,194 @@
+# -*- CODING: utf-B -*-
+"""MedeirosZacharyA1Q2b
+
+COMP 1012 SECTION AO1
+INSTRUCTOR [Rasit Eskicioglu]
+ASSIGNMENT: A1 Question 2b
+AUTHOR []
+VERSION []
+PURPOSE:
+"""
+
+#Initial Variables
+grade = 0
+gpa = 0
+tot_gpa = 0
+sum_gpa = 0
+tot_credit_hours = 0
+sum_credit_hours = 0
+course_count = 0
+sum_course_count = 0
+
+#Asking user for student number
+student_number = input("Enter Student Number: ")
+
+#Start of while loop
+school_loop = True
+while school_loop:
+    #User Input
+    course_code = input("Enter course code: ")
+    prerequisite = input("Enter courses for which this course is a prerequisite: ")
+    credit_hours = int(input("Enter course credit hour: "))
+    student_score = float(input("Enter student score: "))
+
+    #Calculating grade and gpa off student score
+    if student_score < 50:
+        grade = "F"
+        gpa = 0.0
+
+    elif student_score >= 50 and student_score <60:
+        grade = "D"
+        gpa = 1.0
+
+    elif student_score >= 60 and student_score <65:
+        grade = "C"
+        gpa = 2.0
+
+    elif student_score >= 65 and student_score <70:
+        grade = "C+"
+        gpa = 2.5
+
+    elif student_score >= 70 and student_score <75:
+        grade = "B"
+        gpa = 3.0
+
+    elif student_score >= 75 and student_score <80:
+        grade = "B+"
+        gpa = 3.5
+
+    elif student_score >= 80 and student_score <90:
+        grade = "A"
+        gpa = 4.0
+
+    else:
+        grade = "A+"
+        gpa = 4.0
+
+    #Output of student number, course code and grade in course
+    print("--------------------------------------")
+    print(f"Student number {student_number} {course_code} Grade: {grade}")
+    #Message for student if they score less than 60
+    if student_score < 50:
+        print(f"You cannot take {prerequisite} except if this course is repeated and a passing\ngrade of at least C is achieved.")
+        print("This grade will appear on your transcript; even when you retake the course and achieve a higher grade,\nboth grades will be used for your overall GPA calculation.")
+    elif student_score < 60:
+        print(f"You cannot take {prerequisite} except if this course is repeated and a passing\ngrade of at least C is achieved.")
+    print("--------------------------------------")
+
+    #Calcutaing and storing course count, credit hours, and gpa
+    sum_course_count += course_count + 1
+    sum_credit_hours += credit_hours
+    tot_gpa += gpa * credit_hours
+
+    #Asking user if they have another course if 'no' then loop is broken
+    continue_course = input("Do you have another course for this student (yes/no): ").lower()
+    if continue_course == "no":
+        school_loop = False
+
+#Calculation for average gpa across all courses
+sum_gpa = tot_gpa / sum_credit_hours
+
+#Final message
+print("--------------------------------------")
+print(f"The student GPA is: {sum_gpa:.2f}")
+print(f"Total course count is: {sum_course_count}")
+print(f"Total credit hours is: {sum_credit_hours}")
+#Massage for average gpa
+if sum_gpa > 2.0 and sum_gpa < 3.74:
+    print("Congratulation you have achieved at least the minimum GPS to graduate.")
+elif sum_gpa > 3.75:
+    print("Congratulations, you are an Honour student.")
+else:
+    print("You do not meet the GPA requirements to graduate.")
+print("--------------------------------------")
+
+"""
+Table 5: Student GPAs
+Enter Student Number: 1012
+Enter course code: COMP1010
+Enter courses for which this course is a prerequisite: COMP2028, COMP2030
+Enter course credit hour: 3
+Enter student score: 89.4
+--------------------------------------
+Student number 1012 COMP1010 Grade: A
+--------------------------------------
+Do you have another course for this student (yes/no): yes
+Enter course code: COMP1012
+Enter courses for which this course is a prerequisite: COMP2028, COMP2030
+Enter course credit hour: 3
+Enter student score: 92.33
+--------------------------------------
+Student number 1012 COMP1012 Grade: A+
+--------------------------------------
+Do you have another course for this student (yes/no): yes
+Enter course code: COMP1013
+Enter courses for which this course is a prerequisite: COMP2028,COMP2030
+Enter course credit hour: 3
+Enter student score: 62.1
+--------------------------------------
+Student number 1012 COMP1013 Grade: C
+--------------------------------------
+Do you have another course for this student (yes/no): yes
+Enter course code: COMP1020
+Enter courses for which this course is a prerequisite: COMP2020, COMP2028, COMP2030
+Enter course credit hour: 3
+Enter student score: 49.82
+--------------------------------------
+Student number 1012 COMP1020 Grade: F
+You cannot take COMP2020, COMP2028, COMP2030 except if at least a passing
+grade of at least C is achieved
+This grade will appear on your transcript; even when you retake the course and achieve a higher grade, 
+both grades will be used for your overall GPA calculation.
+--------------------------------------
+Do you have another course for this student (yes/no): yes
+Enter course code: COMP1030
+Enter courses for which this course is a prerequisite: COMP2020, COMP2028, COMP2030
+Enter course credit hour: 3
+Enter student score: 50.46
+--------------------------------------
+Student number 1012 COMP1030 Grade: D
+You cannot take COMP2020, COMP2028, COMP2030 except if this course is repeated and a passing
+grade of at least C is achieved.
+--------------------------------------
+Do you have another course for this student (yes/no): yes
+Enter course code: COMP1040
+Enter courses for which this course is a prerequisite: COMP2020, COMP2028, COMP2030
+Enter course credit hour: 3
+Enter student score: 76.24
+--------------------------------------
+Student number 1012 COMP1040 Grade: B+
+--------------------------------------
+Do you have another course for this student (yes/no): yes
+Enter course code: COMP2070
+Enter courses for which this course is a prerequisite: COMP3070
+Enter course credit hour: 3
+Enter student score: 91.22
+--------------------------------------
+Student number 1012 COMP2070 Grade: A+
+--------------------------------------
+Do you have another course for this student (yes/no): yes
+Enter course code: COMP1060
+Enter courses for which this course is a prerequisite: COMP2028, COMP2030
+Enter course credit hour: 3
+Enter student score: 66.1
+--------------------------------------
+Student number 1012 COMP1060 Grade: C+
+--------------------------------------
+Do you have another course for this student (yes/no): yes
+Enter course code: COMP1080
+Enter courses for which this course is a prerequisite: COMP2028, COMP2030
+Enter course credit hour: 3
+Enter student score: 73
+--------------------------------------
+Student number 1012 COMP1080 Grade: B
+--------------------------------------
+Do you have another course for this student (yes/no): no
+--------------------------------------
+The student GPA is: 2.67
+Total course count is: 9
+Total credit hours is: 27
+Congratulation you have achieved at least the minimum GPS to graduate.
+--------------------------------------
+
+Process finished with exit code 0
+"""

@@ -1,0 +1,157 @@
+# -*- CODING: utf-B -*-
+"""MedeirosZacharyA1Q2a
+
+COMP 1012 SECTION AO1
+INSTRUCTOR [Rasit Eskicioglu]
+ASSIGNMENT: A1 Question 2a
+AUTHOR []
+VERSION []
+PURPOSE:
+"""
+
+#Setting variables for admision day
+admisionday = "2023-9-1"
+admision = admisionday.split("-",2)
+generation = "-1"
+
+#Start of while loop
+applicant_loop = True
+while applicant_loop:
+    #User input
+    name = str(input("Please enter applicant name: "))
+    date_of_birth = input("Please enter date of birth: ")
+    birth = date_of_birth.split("-", 2)
+
+    #Gathering Year, Month, and Day variables for admision and birth
+    admision_YEAR = int(admision[0])
+    admision_MONTHS = int(admision[1])
+    admision_DAYS = int(admision[2])
+    birth_YEAR = int(birth[0])
+    birth_MONTHS = int(birth[1])
+    birth_DAYS = int(birth[2])
+
+    #Calculating age of user
+    age_YEARS = admision_YEAR - birth_YEAR
+    if admision_MONTHS < birth_MONTHS:
+        age_YEARS = age_YEARS - 1
+        admision_MONTHS = admision_MONTHS + 12
+
+    if admision_DAYS < birth_DAYS:
+        birth_MONTHS = birth_MONTHS + 1
+        admision_DAYS = admision_DAYS + 31
+
+    age_MONTHS = admision_MONTHS - birth_MONTHS
+    age_DAYS = admision_DAYS - birth_DAYS
+
+    #Message based off of age of user
+    if age_YEARS < 16:
+        generation = "You must be 16 years old to be admitted to the University"
+
+    elif age_YEARS >= 16 and age_YEARS <= 19:
+        generation = "You are a Teenager"
+
+    elif age_YEARS >19 and age_YEARS <= 30:
+        generation = "You are a Young Adult"
+
+    else:
+        generation = "You are a Adult"
+
+    #Message for applicant
+    print("--------------------------------------------------")
+    print("Applicant Name: ", name)
+    print("Applicant birth Year is: ", birth_YEAR)
+    print("Applicant birth Month is: ", birth_MONTHS)
+    print("Applicant age is ", age_YEARS, " Years ", age_MONTHS, " Months ", age_DAYS, "Days")
+    print(f"{generation}")
+    print("--------------------------------------------------")
+
+    #Ask the user for another application and ends the loop if input is 'no'.
+    another_application = input("Do you have another application (yes/no): ").lower()
+    if another_application == "no":
+        applicant_loop = False
+
+"""
+Table 3: Student Classification
+Please enter applicant name: James Bills
+Please enter date of birth: 2000-12-12
+--------------------------------------------------
+Applicant Name:  James Bills
+Applicant birth Year is:  2000
+Applicant birth Month is:  13
+Applicant age is  22  Years  8  Months  20 Days
+You are a Young Adult
+--------------------------------------------------
+Do you have another application (yes/no): yes
+Please enter applicant name: Johnathan Breds
+Please enter date of birth: 2001-3-5
+--------------------------------------------------
+Applicant Name:  Johnathan Breds
+Applicant birth Year is:  2001
+Applicant birth Month is:  4
+Applicant age is  22  Years  5  Months  27 Days
+You are a Young Adult
+--------------------------------------------------
+Do you have another application (yes/no): yes
+Please enter applicant name: Phil David
+Please enter date of birth: 2001-4-5
+--------------------------------------------------
+Applicant Name:  Phil David
+Applicant birth Year is:  2001
+Applicant birth Month is:  5
+Applicant age is  22  Years  4  Months  27 Days
+You are a Young Adult
+--------------------------------------------------
+Do you have another application (yes/no): yes
+Please enter applicant name: John Farm
+Please enter date of birth: 2002-5-6
+--------------------------------------------------
+Applicant Name:  John Farm
+Applicant birth Year is:  2002
+Applicant birth Month is:  6
+Applicant age is  21  Years  3  Months  26 Days
+You are a Young Adult
+--------------------------------------------------
+Do you have another application (yes/no): yes
+Please enter applicant name: Shawn Awesome
+Please enter date of birth: 1995-6-8
+--------------------------------------------------
+Applicant Name:  Shawn Awesome
+Applicant birth Year is:  1995
+Applicant birth Month is:  7
+Applicant age is  28  Years  2  Months  24 Days
+You are a Young Adult
+--------------------------------------------------
+Do you have another application (yes/no): yes
+Please enter applicant name: Paul Teacher
+Please enter date of birth: 1992-2-9
+--------------------------------------------------
+Applicant Name:  Paul Teacher
+Applicant birth Year is:  1992
+Applicant birth Month is:  3
+Applicant age is  31  Years  6  Months  23 Days
+You are a Adult
+--------------------------------------------------
+Do you have another application (yes/no): yes
+Please enter applicant name: John Oaken
+Please enter date of birth: 1989-3-7
+--------------------------------------------------
+Applicant Name:  John Oaken
+Applicant birth Year is:  1989
+Applicant birth Month is:  4
+Applicant age is  34  Years  5  Months  25 Days
+You are a Adult
+--------------------------------------------------
+Do you have another application (yes/no): yes
+Please enter applicant name: James Jammers
+Please enter date of birth: 2009-3-7
+--------------------------------------------------
+Applicant Name:  James Jammers
+Applicant birth Year is:  2009
+Applicant birth Month is:  4
+Applicant age is  14  Years  5  Months  25 Days
+You must be 16 years old to be admitted to the University
+--------------------------------------------------
+Do you have another application (yes/no): no
+
+Process finished with exit code 0
+"""

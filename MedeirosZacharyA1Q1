@@ -1,3 +1,14 @@
+# -*- CODING: utf-B -*-
+"""MedeirosZacharyA1Q1
+
+COMP 1012 SECTION AO1
+INSTRUCTOR [Rasit Eskicioglu]
+ASSIGNMENT: A1 Question 1
+AUTHOR []
+VERSION []
+PURPOSE:
+"""
+
 # Constants
 markup_percent = .40
 tax_PST = .07
@@ -11,7 +22,7 @@ shipping_limit = 75
 tot_manufacturer_coupon = 0
 staff_discount = 0
 stock_discount = 0
-tot_sales_bofore_discount_tax = 0
+tot_sales_before_discount_tax = 0
 tot_sales_before_tax = 0
 amount_pst = 0
 amount_gst = 0
@@ -21,6 +32,7 @@ tot_reward_points = 0
 tot_profit = 0
 tot_cost = 0
 
+#Start of while loop
 continue_transaction = True
 question_staff_code = input('Do you have a staff code (yes/no):')
 if question_staff_code == "yes":
@@ -32,8 +44,8 @@ while continue_transaction:
     #Input details of transaction
     stock_code = input("Please enter the stock code: ")
     cost = int(input("Please enter the stock cost: "))
-    quantity = int(input("Please enter quantitiy of stock: "))
-    manufacturer_coupon = int(input("Please enter manufacturing coupon:"))
+    quantity = int(input("Please enter quantity of stock: "))
+    manufacturer_coupon = int(input("Please enter manufacturing coupon: "))
 
     #Calculating manufacturer coupon amount
     manufacturer_coupon_amount = manufacturer_coupon * quantity
@@ -43,7 +55,7 @@ while continue_transaction:
     markup_cost = cost + (cost * markup_percent)
     if stock_code == "A3453" and quantity >= 2:
         stock_discount += (markup_cost * .15) * quantity
-    tot_sales_bofore_discount_tax += markup_cost * quantity
+    tot_sales_before_discount_tax += markup_cost * quantity
 
     #Calculating profit on transaction
     base_cost = cost * quantity
@@ -58,42 +70,155 @@ while continue_transaction:
         TAX_GST = tax_GST
 
     #Calculating provincial sales tax amount
-    amount_pst += tot_sales_bofore_discount_tax * TAX_PST
-    amount_gst += tot_sales_bofore_discount_tax * TAX_GST
+    amount_pst += tot_sales_before_discount_tax * TAX_PST
+    amount_gst += tot_sales_before_discount_tax * TAX_GST
 
     #Ask the user if they want to continue transaction
+    print("------------------------------------------------------------------------")
     another_stock = input("Do you have another purchase (yes/no): ").lower()
+    print("------------------------------------------------------------------------")
     if another_stock == 'no':
         continue_transaction = False
 
 #Calculating staff discount
 if staff_code > 0:
-    staff_discount = tot_sales_bofore_discount_tax * staff_discount_rate
+    staff_discount = tot_sales_before_discount_tax * staff_discount_rate
 
 #Calculating total sales before tax
-tot_sales_before_tax = tot_sales_bofore_discount_tax - tot_manufacturer_coupon - staff_discount - stock_discount
+tot_sales_before_tax = tot_sales_before_discount_tax - tot_manufacturer_coupon - staff_discount - stock_discount
 
 #Calculating shipping cost
-if tot_sales_bofore_discount_tax < shipping_limit:
+if tot_sales_before_discount_tax < shipping_limit:
     cost_of_shipping = shipping_cost
 
 #Calculating profit on transaction
-tot_profit = tot_sales_bofore_discount_tax - tot_cost
+tot_profit = tot_sales_before_discount_tax - tot_cost
 
 #Calculating total cost for customer
 tot_amount_for_customer = tot_sales_before_tax + amount_gst + amount_pst + cost_of_shipping
 
 #Calculating total reward points
-tot_reward_points = 10 * tot_sales_bofore_discount_tax
+tot_reward_points = 10 * tot_sales_before_discount_tax
 
 print(f"Total manufacturer coupon amount is: ${tot_manufacturer_coupon:.2f}")
-print(f"Staff discound amount is: ${staff_discount:.2f}")
-print(f"Stock discount amound is: ${stock_discount:.2f}")
-print(f"Total sales before Discount and tax is: ${tot_sales_bofore_discount_tax:.2f}")
+print(f"Staff discount amount is: ${staff_discount:.2f}")
+print(f"Stock discount amount is: ${stock_discount:.2f}")
+print(f"Total sales before Discount and tax is: ${tot_sales_before_discount_tax:.2f}")
 print(f"Total sales before tax is: ${tot_sales_before_tax:.2f}")
-print(f"Total cost of shiiping is: ${cost_of_shipping:.2f}")
-print(f"Provincial sales Tax amound is: ${amount_pst:.2f}")
-print(f"Canada General sales Tax amound is: ${amount_gst:.2f}")
+print(f"Total cost of shipping is: ${cost_of_shipping:.2f}")
+print(f"Provincial sales Tax amount is: ${amount_pst:.2f}")
+print(f"Canada General sales Tax amount is: ${amount_gst:.2f}")
 print(f"Total amount paid by the customer is: ${tot_amount_for_customer:.2f}")
 print(f"The profit on the transaction is: ${tot_profit:.2f}")
 print(f"The total reward points is: ${tot_reward_points:.2f}")
+print("------------------------------------------------------------------------")
+
+"""
+Table 1
+Do you have a staff code (yes/no):yes
+Enter staff code: 13
+Please enter the stock code: A3423
+Please enter the stock cost: 25
+Please enter quantity of stock: 1
+Please enter manufacturing coupon: 5
+------------------------------------------------------------------------
+Do you have another purchase (yes/no): yes
+------------------------------------------------------------------------
+Please enter the stock code: A3453
+Please enter the stock cost: 20
+Please enter quantity of stock: 4
+Please enter manufacturing coupon: 0
+------------------------------------------------------------------------
+Do you have another purchase (yes/no): yes
+------------------------------------------------------------------------
+Please enter the stock code: A3123
+Please enter the stock cost: 20
+Please enter quantity of stock: 4
+Please enter manufacturing coupon: 0
+------------------------------------------------------------------------
+Do you have another purchase (yes/no): yes
+------------------------------------------------------------------------
+Please enter the stock code: E1023
+Please enter the stock cost: 20
+Please enter quantity of stock: 2
+Please enter manufacturing coupon: 0
+------------------------------------------------------------------------
+Do you have another purchase (yes/no): yes
+------------------------------------------------------------------------
+Please enter the stock code: E1024
+Please enter the stock cost: 50
+Please enter quantity of stock: 1
+Please enter manufacturing coupon: 10
+------------------------------------------------------------------------
+Do you have another purchase (yes/no): no
+------------------------------------------------------------------------
+Total manufacturer coupon amount is: $15.00
+Staff discount amount is: $38.50
+Stock discount amount is: $16.80
+Total sales before Discount and tax is: $385.00
+Total sales before tax is: $314.70
+Total cost of shipping is: $0.00
+Provincial sales Tax amount is: $30.87
+Canada General sales Tax amount is: $22.05
+Total amount paid by the customer is: $367.62
+The profit on the transaction is: $110.00
+The total reward points is: $3850.00
+------------------------------------------------------------------------
+
+Process finished with exit code 0
+"""
+
+"""
+Table 2
+Do you have a staff code (yes/no):yes
+Enter staff code: 24
+Please enter the stock code: A2015
+Please enter the stock cost: 10
+Please enter quantity of stock: 1
+Please enter manufacturing coupon: 0
+------------------------------------------------------------------------
+Do you have another purchase (yes/no): yes
+------------------------------------------------------------------------
+Please enter the stock code: A1225
+Please enter the stock cost: 10
+Please enter quantity of stock: 1
+Please enter manufacturing coupon: 0
+------------------------------------------------------------------------
+Do you have another purchase (yes/no): yes
+------------------------------------------------------------------------
+Please enter the stock code: A1125
+Please enter the stock cost: 10
+Please enter quantity of stock: 1
+Please enter manufacturing coupon: 0
+------------------------------------------------------------------------
+Do you have another purchase (yes/no): yes
+------------------------------------------------------------------------
+Please enter the stock code: E1452
+Please enter the stock cost: 10
+Please enter quantity of stock: 1
+Please enter manufacturing coupon: 0
+------------------------------------------------------------------------
+Do you have another purchase (yes/no): yes
+------------------------------------------------------------------------
+Please enter the stock code: E1250
+Please enter the stock cost: 10
+Please enter quantity of stock: 1
+Please enter manufacturing coupon: 0
+------------------------------------------------------------------------
+Do you have another purchase (yes/no): no
+------------------------------------------------------------------------
+Total manufacturer coupon amount is: $0.00
+Staff discount amount is: $7.00
+Stock discount amount is: $0.00
+Total sales before Discount and tax is: $70.00
+Total sales before tax is: $63.00
+Total cost of shipping is: $7.50
+Provincial sales Tax amount is: $5.88
+Canada General sales Tax amount is: $4.20
+Total amount paid by the customer is: $80.58
+The profit on the transaction is: $20.00
+The total reward points is: $700.00
+------------------------------------------------------------------------
+
+Process finished with exit code 0
+"""

@@ -1,0 +1,19 @@
+assignment_scores = []
+test_scores = []
+
+with open('marks.csv') as file:
+    # Skip the header line
+    header = file.readline()
+
+    # Read the rest of the lines
+    for line in file:
+        # Split the line into columns using a comma
+        columns = line.strip().split(',')
+        if len(columns) == 3:
+            # Convert the assignment and test scores to float and append to their lists
+            assignment_scores.append(float(columns[1]))
+            test_scores.append(float(columns[2]))
+        else:
+            print("Skipping invalid line:", line)
+print("Assignment Scores:", assignment_scores)
+print("Test Scores:", test_scores)

@@ -1,0 +1,17 @@
+#Ask the user to input two words
+word1 = input("Enter word:")
+word2 = input("Enter another word:")
+
+#Test if the words are the same length, if not the words cannot be anagrams
+if len(word1) != len(word2):
+    print("not anagrams")
+
+#Convert the words input to sets and test if they are equal to each other, if they are then they are anagrams
+else:
+    set1 = set(word1)
+    set2 = set(word2)
+
+    if set1 == set2:
+        print("anagrams")
+    else:
+        print("not anagrams")

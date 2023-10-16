@@ -1,0 +1,37 @@
+
+# Step 1: Read data from the CSV file and load it into lists
+file_path = 'Week04Houses.csv'
+addresses = []
+sizes = []
+prices = []
+
+with open('Week4Houses.csv') as file:
+    for line in file:
+        data = line.strip().split(',')
+        addresses.append(data[0])
+        sizes.append(float(data[1]))
+        prices.append(float(data[2]))
+
+# Step 2: Initialize variables to keep track of most and least expensive houses
+most_expensive_index = 0
+least_expensive_index = 0
+
+# Step 3: Calculate and print the price per square foot for each house
+for i in range(len(addresses)):
+    price_per_sqft = prices[i] / sizes[i]
+    print(f"{addresses[i]} costs ${prices[i]:.2f} per square foot.")
+
+    # Update most and least expensive houses if necessary
+    if price_per_sqft > prices[most_expensive_index] / sizes[most_expensive_index]:
+        most_expensive_index = i
+    if price_per_sqft < prices[least_expensive_index] / sizes[least_expensive_index]:
+        least_expensive_index = i
+
+# Step 4: Print details of the most and least expensive houses
+print("\nThe least expensive house is at", addresses[least_expensive_index])
+print(f"With {sizes[least_expensive_index]:.0f} sq ft and a selling price of ${prices[least_expensive_index]:,.2f},")
+print(f"the price per square foot is ${prices[least_expensive_index] / sizes[least_expensive_index]:.2f}")
+
+print("\nThe most expensive house is at", addresses[most_expensive_index])
+print(f"With {sizes[most_expensive_index]:.0f} sq ft and a selling price of ${prices[most_expensive_index]:,.2f},")
+print(f"the price per square foot is ${prices[most_expensive_index] / sizes[most_expensive_index]:.2f}")

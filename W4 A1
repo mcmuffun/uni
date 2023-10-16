@@ -1,0 +1,8 @@
+data = [12, 14, 25, 56, 67, 78, 89, 90]
+
+even_sum =0
+for number in data:
+    if number %2 ==0:
+        even_sum += number
+print(data)
+print(even_sum)

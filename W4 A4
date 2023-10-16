@@ -1,0 +1,56 @@
+
+list1 = [2, 13, 14, 24, 29, 36, 37, 40, 42, 100]
+list2 = [4, 12, 18, 24, 28, 36, 48, 100]
+
+index1 = 0
+index2 = 0
+common_num = []
+uniq_list1 = []
+uniq_list2 = []
+comb_list = []
+
+
+print("Number in both lists are:")
+while index1 < len(list1) and index2 < len(list2):
+    if list1[index1] == list2[index2]:
+        common_num.append(list1[index1])
+        comb_list.append(list1[index1])
+        comb_list.append(list2[index2])
+        index1 += 1
+        index2 += 1
+    elif list1[index1] < list2[index2]:
+        uniq_list1.append(list1[index1])
+        comb_list.append(list1[index1])
+        index1 += 1
+    else:
+        uniq_list2.append(list2[index2])
+        comb_list.append(list2[index2])
+        index2 += 1
+
+while index1 < len(list1):
+    uniq_list1.append(list1[index1])
+    index1 += 1
+
+while index2 < len(list2):
+    uniq_list2.append(list2[index2])
+    index2 += 1
+
+while index1 < len(list1):
+    comb_list.append(list1[index1])
+    index1 += 1
+
+while index2 < len(list2):
+    comb_list.append(list2[index2])
+    index2 += 1
+
+for number in common_num:
+    print(number)
+print("--------------------------------")
+for number in uniq_list1:
+    print(number)
+print("--------------------------------")
+for number in uniq_list2:
+    print(number)
+print("--------------------------------")
+for number in comb_list:
+    print(number)
